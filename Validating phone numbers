@@ -1,0 +1,13 @@
+import re
+
+# N is the number of test cases
+for _ in range(int(input())):
+    s = input()
+    # ^      : Start of string
+    # [789]  : First digit must be 7, 8, or 9
+    # \d{9}  : Followed by exactly 9 more digits
+    # $      : End of string
+    if re.match(r'^[789]\d{9}$', s):
+        print("YES")
+    else:
+        print("NO")
