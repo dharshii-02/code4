@@ -1,0 +1,16 @@
+import re
+
+def transform(match):
+    if match.group(0) == '&&':
+        return 'and'
+    return 'or'
+
+# Read number of lines
+for _ in range(int(input())):
+    line = input()
+    # Match '&&' or '||' only if preceded and followed by a space
+    # Using lookarounds (?<= ) and (?= ) ensures we don't "consume" the spaces
+    result = re.sub(r"(?<= )(&&|\|\|)(?= )", transform, line)
+    
+    # We run it twice to handle cases where patterns are back-to-back
+    print(re.sub(r"(?<= )(&&|\|\|)(?= )", transform, result))
